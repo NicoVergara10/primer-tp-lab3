@@ -1,14 +1,13 @@
-window.onload = accion;
+let btnCalcular = document.getElementById("btnCalcular");
+btnCalcular.addEventListener("click", clickBtnCalcular);
 
-function accion(){
-    let btnCalcular = document.getElementById("btnCalcular");
-    btnCalcular.addEventListener("click", clickBtnCalcular);
-}
+let btnReinvertir = document.getElementById("btnReinvertir");
+btnReinvertir.addEventListener("click", clickBtnReinvertir);
+
 
 function clickBtnCalcular(){
     let montoInvertido = document.getElementById("montoInvertido");
     let monto = montoInvertido.value;
-    
 
     let cantidadDias = document.getElementById("cantidadDias");
     let dias = cantidadDias.value;
@@ -27,5 +26,16 @@ function clickBtnCalcular(){
         porcentaje = 60;
     }
     const montoFinal = parseInt(monto) + monto * (dias / 360) * (porcentaje / 100);
-    alert(montoFinal)
+    
+    let etiquetaP = document.createElement('p');
+    let texto = document.createTextNode("El monto que debe recibir de acuerdo a su inversión es: " + "$" +  montoFinal);
+    etiquetaP.appendChild(texto);
+
+    document.getElementById("calculoInversion").appendChild(etiquetaP);
+
+}
+
+function clickBtnReinvertir(){
+    const reinversion = montoFinal + montoFinal;
+    alert(reinversion);
 }
