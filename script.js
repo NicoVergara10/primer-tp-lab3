@@ -1,41 +1,41 @@
-let btnCalcular = document.getElementById("btnCalcular");
-btnCalcular.addEventListener("click", clickBtnCalcular);
+const monto = document.getElementById('montoInvertido');
+const dias = document.getElementById('cantidadDias');
+const usuario = document.getElementById('nombreApellido');
+const btnCalcular = document.getElementById('btnCalcular');
+const btnReinvertir = document.getElementById('btnReinvertir');
 
-let btnReinvertir = document.getElementById("btnReinvertir");
-btnReinvertir.addEventListener("click", clickBtnReinvertir);
-
-
-function clickBtnCalcular(){
-    let montoInvertido = document.getElementById("montoInvertido");
-    let monto = montoInvertido.value;
-
-    let cantidadDias = document.getElementById("cantidadDias");
-    let dias = cantidadDias.value;
-    
+function intereses(dias){
     let porcentaje = 0;
-    if(cantidadDias.value >= 30 &&  cantidadDias.value <= 60){
-        porcentaje = 40;
+
+    if(dias >= 30 &&  dias <= 60){
+        porcentaje = (40 / 100);
     }
-    else if (cantidadDias.value > 60 &&  cantidadDias.value <= 120){
-        porcentaje = 45;
+    else if (dias > 60 &&  dias <= 120){
+        porcentaje = (45 / 100);
     }
-    else if(cantidadDias.value > 121 &&  cantidadDias.value < 360){
-        porcentaje = 50;
+    else if(dias > 121 &&  dias < 360){
+        porcentaje = (50 / 100);
     }
     else{
-        porcentaje = 60;
+        porcentaje = (60 / 100);
     }
-    const montoFinal = parseInt(monto) + monto * (dias / 360) * (porcentaje / 100);
-    
+    return porcentaje;
+}
+
+btnCalcular.addEventListener('click', () =>{
+    calcularMonto(monto.value, dias.value)
+})
+btnReinvertir.addEventListener('click', () =>{
+    calcularMonto(monto.value, dias.value)
+})
+
+function calcularMonto(monto, dias){
+   
+    const montoFinal = parseFloat(monto) + monto * (dias / 360) * intereses(dias);
+  
     let etiquetaP = document.createElement('p');
-    let texto = document.createTextNode("El monto que debe recibir de acuerdo a su inversión es: " + "$" +  montoFinal);
-    etiquetaP.appendChild(texto);
+    etiquetaP.appendChild(document.createTextNode("El monto que debe recibir de acuerdo a su inversión es: " + "$" +  montoFinal.toFixed(2)));
 
     document.getElementById("calculoInversion").appendChild(etiquetaP);
-
 }
 
-function clickBtnReinvertir(){
-    const reinversion = montoFinal + montoFinal;
-    alert(reinversion);
-}
