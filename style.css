@@ -1,65 +1,76 @@
-body{
+*{
     margin: 0;
     padding: 0;
-    display: flex;
+}
+body{
+    margin-top: 50px;
+    color: #ffff;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    font-family:consolas;
-    font-size: 30px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 25px;
     text-align: center;
-    background-image: url(https://www.uade.edu.ar/media/vstk2jml/eco.jpg?anchor=center&mode=crop&width=1240&height=910&rnd=132306498662930000);
+    background-image: url(https://www.up.edu.mx/sites/default/files//styles/g_9col/public/escuelas/shutterstock_1504342112.jpg?itok=Xwx4o6Yc);
     background-repeat: no-repeat;
-    background-size: cover;
-    
-  }
-  #btnCalcular{
-    margin-top: 100px;
-  }
-  
-  .grid-layout{
-    display: grid;
-    grid-template-areas: 'auto auto auto';
-    grid-template-rows: 50% 50%;
-    justify-content: center;                       
-    align-content: center;
-    
-  }
-  
-  .cuadrotexto {
+    background-size: cover;  
+}
+.form{
+    background-color: #4277a9;
+}
+.titulo{
     text-align: center;
-  }
-  .caja1{
-    justify-content: center;
-  }
-  
-  
-  button:hover {
-     background-color: rgb(89, 170, 245);
-    
-  }
-  label{
+    margin-bottom: 35px;
     font-weight: bold;
-  }
-  
-  input{
-    height: 50px;
-    width: 300px;
-    font-family: consolas; color: rgb(29, 209, 29);
-    font-weight: bold; font-size: 18px;
-    margin: 10px;
-    padding: 0;
-    padding-left: 0;
+    font-size: 35px;
+    letter-spacing: 2px;
+    color: #000000;
+}
+.contenedor{
+    margin: 25px;
+}
+label{
+    font-weight: 400;
+    text-align: left;
+    display: block;
     text-align: center;
-    
-  }
-  
-  button{
+}
+input{
+    text-decoration: none;
+    border: none;
+    height: 40px;
+    width: 250px;
+    color: rgb(29, 209, 29);
+    font-weight: 100;
+    font-size: 15px;
+    margin: 5px;
+    padding: 10;
+    text-align: center;
+    border-radius: 10px;
+}
+#error1, #error2, #error3{
+    color: #b60404;
+    font-size: 12px;
+    font-style: italic;
+    font-weight: 400;
+}
+button{
     font-size: 20px;
-    font-family: consolas;
-    margin: 15px;
-    height: 100px;
-    width: 300px;
+    margin: 10px;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    height: 50px;
+    width: 170px;
     justify-content: center;
-  }
-  
+    border-radius: 15px;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px 1px #000000;
+}   
+button:hover {
+    background-color: #4277a9;
+    color: #fefefe;
+    box-shadow: 0px 0px 5px 1px #fefefe;
+}
+.calculoInversion{
+    margin: 20px;
+    margin-bottom: 50px;
+}
