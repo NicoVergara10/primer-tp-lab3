@@ -94,6 +94,11 @@ function calcularReinversion(monto, dias){
     let montoInicial = parseFloat(monto) + monto * (dias / 360) * intereses(dias);
     let montoFinal = montoInicial + montoInicial * (dias / 360) * intereses(dias);
 
+    let etiqueta = document.createElement('p');
+    etiqueta.appendChild(document.createTextNode("REINVERSION DE CAPITAL"));
+    document.getElementById("calculoReinvertir").innerHTML = '';
+    document.getElementById("calculoReinvertir").appendChild(etiqueta);
+
     for (let i = 0; i < 4; i++) {
         periodo[i] = i + 1;
         
@@ -113,9 +118,9 @@ function calcularReinversion(monto, dias){
         const row = document.createElement("table");
         row.innerHTML = `
           <div>
+            <br>
             <tr>
               <th>PERIODO</th>
-              <br>
               <td>${periodo[i]}</td>
               <th>MONTO INICIAL</th>
               <td>${montoInicial.toFixed(2)}</td>
