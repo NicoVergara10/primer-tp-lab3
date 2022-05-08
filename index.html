@@ -15,18 +15,18 @@
     <form id="form">
         <div class="nombre">
             <label for="nombre">Nombre y Apellido</label>
-            <input type="text" name="nombreApellido" id="nombreApellido" placeholder="Nicolas Vergara">
-            <div class="error"></div>
+            <input type="text" name="nombreApellido" id="nombreApellido" placeholder="Nombre y Apellido" required="" pattern="[a-z-A-Z]+[a-z-A-Z]"/>
+            <div class="error1"></div>
         </div>
         <div class="inversion">
             <label for="inversion">Monto a Invertir</label>
-            <input type="number" name="montoInvertido" id="montoInvertido" placeholder= 1000>
-            <div class="error"></div>
+            <input type="number" name="montoInvertido" id="montoInvertido" placeholder= 1000 required/>
+            <div class="error2"></div>
         </div>
         <div class="dias">
             <label for="dias">Cantidad de días</label>
-            <input type="number" name="cantidadDias" id="cantidadDias" placeholder= 30>
-            <div class="error"></div>
+            <input type="number" name="cantidadDias" id="cantidadDias" placeholder= 30 required/>
+            <div class="error3"></div>
         </div>
         <button type="button" id="btnCalcular">Calcular</button>
         <button type="button" id="btnReinvertir">Reinvertir Capital</button>
