@@ -60,7 +60,7 @@ btnReinvertir.addEventListener('click', () =>{
 })
 
 
-function calcularMonto(monto, dias, usuario){
+function calcularMonto(monto, dias){
     const montoFinal = parseFloat(monto) + monto * (dias / 360) * intereses(dias);
   
     let etiquetaP = document.createElement('p');
@@ -71,17 +71,43 @@ function calcularMonto(monto, dias, usuario){
 function calcularReinversion(monto, dias){
     let periodo = [];
     document.getElementById("calculoReinvertir").innerHTML = '';
+
+    let montoInicial = parseFloat(monto) + monto * (dias / 360) * intereses(dias);
+    let montoFinal = montoInicial + montoInicial * (dias / 360) * intereses(dias);
+
     for (let i = 0; i < 4; i++) {
         periodo[i] = i + 1;
-        let montoInicial = parseFloat(monto) + monto * (dias / 360) * intereses(dias);
-        let montoFinal = montoInicial + montoInicial * (dias / 360) * intereses(dias);
-
-        const row = document.createElement('tr');
+        
+        if(periodo[i] == 1){
+          montoInicial = parseFloat(monto);
+          montoFinal = montoInicial + montoInicial * (dias / 360) * intereses(dias);
+        }else if(periodo[i] == 2){
+          montoInicial = montoFinal;
+          montoFinal = montoInicial + montoInicial * (dias / 360) * intereses(dias);
+        }else if(periodo[i] == 3){
+          montoInicial = montoFinal;
+          montoFinal = montoInicial + montoInicial * (dias / 360) * intereses(dias);
+        }else{
+          montoInicial = montoFinal;
+          montoFinal = montoInicial + montoInicial * (dias / 360) * intereses(dias);
+        }
+        debugger;
+        const row = document.createElement('table');
         row.innerHTML = `
-            <td>${periodo[i]}</td>
-            <td>${montoInicial.toFixed(2)}</td>
-            <td>${montoFinal.toFixed(2)}</td>
+          <div style="text-align: center; justify-content: center; align-items: center;">
+            <tr style="text-align: center; justify-content: center; align-items: center;">
+              <th>PERIODO</th>
+              <br>
+              <td>${periodo[i]}</td>
+              <th>MONTO INICIAL</th>
+              <td>${montoInicial.toFixed(2)}</td>
+              <th>MONTO FINAL</th>
+              <td>${montoFinal.toFixed(2)}</td>
+            </tr>
+          </div>
+                  
         `;
         document.getElementById("calculoReinvertir").appendChild(row);
+        
     }
 }
