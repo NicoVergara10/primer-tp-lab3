@@ -25,11 +25,18 @@ function intereses(dias){
 btnCalcular.addEventListener('click', () =>{
     
     if (usuario.value == "") {
-        alert("Debe completar el campo de nombre completo.");
+        let etiquetaU = document.createElement('p');
+        etiquetaU.appendChild(document.createTextNode("El campo no debe estar vacío, por favor ingrese su nombre y apellido"));
+        document.getElementById("error1").appendChild(etiquetaU);
+      
       } else if (monto.value < 1000) {
-        alert("El monto debe ser mayor o igual a $1000.");
+        let etiquetaM = document.createElement('p');
+        etiquetaM.appendChild(document.createTextNode("El monto a ingresar debe ser igual o superior a $1000"));
+        document.getElementById("error2").appendChild(etiquetaM);
       } else if (dias.value < 30) {
-        alert("Los días deben ser mayor o iguales a 30.");
+        let etiquetaD = document.createElement('p');
+        etiquetaD.appendChild(document.createTextNode("La cantidad de días a ingresar debe ser igual o superior a 30"));
+        document.getElementById("error3").appendChild(etiquetaD);
       } else {
         calcularMonto(monto.value, dias.value);
       }
