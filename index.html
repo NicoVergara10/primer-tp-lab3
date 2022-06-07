@@ -8,28 +8,29 @@
 	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
 	<meta content="utf-8" http-equiv="encoding"> 
     <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/vue@3"></script>
     <script src="script.js" defer></script>
 
 </head>
 <body>
-    <form id="form">
-        <h1 class="titulo">SIMULADOR DE PLAZO FIJO</h1>
+    <form id="app">
+        <h1 class="titulo">{{titulo}}</h1>
         <div class="contenedor">
-            <label for="nombreApellido">Nombre y Apellido: </label>
-            <input type="text" name="nombreApellido" id="nombreApellido" placeholder="Ingrese su nombre y apellido"/>
+            <label>Nombre y Apellido </label>
+            <input type="text" v-model="nombreApellido" id="nombreApellido" placeholder="Ingrese su nombre y apellido"/>
             <div id="error1"></div>
         </div>
         <div class="contenedor">
-            <label for="montoInvertido">Monto a Invertir: </label>
-            <input type="number" name="montoInvertido" id="montoInvertido" placeholder= 1000 />
+            <label>Monto a Invertir: </label>
+            <input type="number" v-model="montoInvertido" id="montoInvertido" placeholder= 1000 />
             <div id="error2"></div>
         </div>
         <div class="contenedor">
-            <label for="cantidadDias">Cantidad de días: </label>
-            <input type="number" name="cantidadDias" id="cantidadDias" placeholder= 30 />
+            <label>Cantidad de Días: </label>
+            <input type="number" v-model="cantidadDias" id="cantidadDias" placeholder= 30 />
             <div id="error3"></div>
         </div>
-        <button type="button" id="btnCalcular">CALCULAR</button>
+        <button type="button" id="btnCalcular" @click="calculo(montoInvertido, cantidadDias)">CALCULAR</button>
         <button type="button" id="btnReinvertir">REINVERTIR</button>
     </form>
     <div class="calculoInversion" id="calculoInversion"></div>
