@@ -5,7 +5,12 @@ let app = Vue.createApp({
       nombreApellido: "",
       montoInvertido: "",
       cantidadDias: "",
-      calcular: true,
+      emptyName: false,
+      montoBug: false,
+      diasBug: false,
+      nameError: "El campo no debe estar vacío, por favor ingrese su nombre y apellido",
+      montoError: "El monto a ingresar debe ser igual o superior a $1000",
+      diasError: "La cantidad de días a ingresar debe ser igual o superior a 30",
     }
   },
   methods: {
@@ -27,9 +32,36 @@ let app = Vue.createApp({
       return porcentaje;
     },
     calculo(montoInvertido, cantidadDias){
-      montoFinal = parseFloat(montoInvertido) + montoInvertido * (cantidadDias / 360) * this.intereses(cantidadDias);
-      alert(montoFinal)
-    }
+      let montoFinal = parseFloat(this.montoInvertido) + this.montoInvertido * (this.cantidadDias / 360) * this.intereses(cantidadDias);
+      return montoFinal;
+    },
+    btnCalcular(){
+      if(this.nombreApellido.trim() === ""){
+          this.emptyName = true;
+          setTimeout(() => {
+            document.getElementById('error1').remove();
+          }, 3000);
+      }
+
+      if(this.montoInvertido < 1000){
+        this.montoBug = true;
+        setTimeout(() => {
+          document.getElementById('error2').remove();
+        }, 3000);
+      }
+
+      if(this.cantidadDias < 30){
+         this.diasBug = true;
+         setTimeout(() => {
+          document.getElementById('error3').remove();
+         }, 3000);
+      }
+      else{
+        calculo(montoInvertido, cantidadDias);
+      }
+
+      },
+    
   }
 
 });app.mount('#app');
