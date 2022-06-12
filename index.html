@@ -9,15 +9,42 @@
 	<meta content="utf-8" http-equiv="encoding"> 
     <link rel="stylesheet" href="style.css">
     <script src="https://unpkg.com/vue@3"></script>
-    <script src="script.js" defer></script>
-    
-
+    <script src="main.js" defer></script>
+    <script src="./components/ParrafoMonto.js"></script>
 </head>
 <body>
-    <script src="./components/FormValidation.js"></script>
-    <script src="./components/Buttons.js"></script>
-    
-    <div class="calculoInversion" id="calculoInversion"></div>
-    <div class="cuadroReinventir" id="calculoReinvertir"></div>
+    <form id="app">
+        <h1 class="titulo">{{titulo}}</h1>
+        <div class="contenedor">
+            <label>Nombre y Apellido: </label>
+            <input type="text" v-model="nombre" id="nombreApellido" placeholder="Ingrese su nombre y apellido"/>
+            <div id="error1">
+                <p v-if="emptyName">{{errormsg[0]}}</p>
+            </div>
+        </div>
+        <div class="contenedor">
+            <label>Monto a Invertir: </label>
+            <input type="number" v-model="monto" id="montoInvertido" placeholder= 1000 />
+            <div id="error2">
+                <p v-if="montoBug">{{errormsg[1]}}</p>
+            </div>
+        </div>
+        <div class="contenedor">
+            <label>Cantidad de Días: </label>
+            <input type="number" v-model="dias" id="cantidadDias" placeholder= 30 />
+            <div id="error3">
+                <p v-if="diasBug">{{errormsg[2]}}</p>
+            </div>
+        </div>
+        <button type="button" id="btnCalcular" @click="Calcular">CALCULAR</button>
+        <button type="button" id="btnReinvertir" @click="calcularReinversion">REINVERTIR</button>
+        <div class="calculoInversion" id="calculoInversion">
+          <p v-if="invirtioPlata">El monto que recibirá es de ${{montoFinal.toFixed(2)}}</p>
+          <parrafo-monto v-if="invirtioPlata"></parrafo-monto>
+        </div>
+        <div class="cuadroReinventir" id="calculoReinvertir"></div>
+        </form>
+          
+          
 </body>
 </html>
