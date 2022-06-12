@@ -5,7 +5,6 @@ let app = Vue.createApp({
       nombreApellido: "",
       montoInvertido: "",
       cantidadDias: "",
-      calcular: true,
     }
   },
   methods: {
@@ -27,9 +26,29 @@ let app = Vue.createApp({
       return porcentaje;
     },
     calculo(montoInvertido, cantidadDias){
-      montoFinal = parseFloat(montoInvertido) + montoInvertido * (cantidadDias / 360) * this.intereses(cantidadDias);
-      alert(montoFinal)
-    }
+      calculoFinal = parseFloat(montoInvertido) + montoInvertido * (cantidadDias / 360) * this.intereses(cantidadDias);
+    },
+    reinvertir(montoInvertido, cantidadDias){
+      let periodo = [];
+
+      for (let i = 0; i < 4; i++) {
+        periodo[i] = i + 1;
+        
+        if(periodo[i] == 1){
+          montoInicial = parseFloat(montoInvertido);
+          montoFinal = calculo(montoInvertido, cantidadDias);
+        }else if(periodo[i] == 2){
+          montoInicial = montoFinal;
+          montoFinal = calculo(montoInicial, cantidadDias);
+        }else if(periodo[i] == 3){
+          montoInicial = montoFinal;
+          montoFinal = calculo(montoInicial, cantidadDias);
+        }else{
+          montoInicial = montoFinal;
+          montoFinal = calculo(montoInicial, cantidadDias);
+        }
+      }
+    },
   }
 
 });app.mount('#app');
