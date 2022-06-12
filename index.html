@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Primer trabajo práctico</title>
+    <title>Segundo trabajo práctico</title>
 	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
 	<meta content="utf-8" http-equiv="encoding"> 
     <link rel="stylesheet" href="style.css">
@@ -14,32 +14,9 @@
 
 </head>
 <body>
-    <form id="app">
-        <h1 class="titulo">{{titulo}}</h1>
-        <div class="contenedor">
-            <label>Nombre y Apellido </label>
-            <input type="text" v-model="nombreApellido" id="nombreApellido" placeholder="Ingrese su nombre y apellido"/>
-            <div id="error1">
-                <p v-if="emptyName">{{nameError}}</p>
-            </div>
-        </div>
-        <div class="contenedor">
-            <label>Monto a Invertir: </label>
-            <input type="number" v-model="montoInvertido" id="montoInvertido" placeholder= 1000 />
-            <div id="error2">
-                <p v-if="montoBug">{{montoError}}</p>
-            </div>
-        </div>
-        <div class="contenedor">
-            <label>Cantidad de Días: </label>
-            <input type="number" v-model="cantidadDias" id="cantidadDias" placeholder= 30 />
-            <div id="error3">
-                <p v-if="diasBug">{{diasError}}</p>
-            </div>
-        </div>
-        <button type="button" id="btnCalcular" @click="btnCalcular">CALCULAR</button>
-        <button type="button" id="btnReinvertir">REINVERTIR</button>
-    </form>
+    <script src="./components/FormValidation.js"></script>
+    <script src="./components/Buttons.js"></script>
+    
     <div class="calculoInversion" id="calculoInversion"></div>
     <div class="cuadroReinventir" id="calculoReinvertir"></div>
 </body>
