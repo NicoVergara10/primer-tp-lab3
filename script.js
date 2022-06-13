@@ -5,14 +5,30 @@ let app = Vue.createApp({
       nombreApellido: "",
       montoInvertido: "",
       cantidadDias: "",
+      texto1: 'El campo no debe estar vacío, por favor ingrese su nombre y apellido',
+      texto2: 'El monto a ingresar debe ser igual o superior a $1000',
+      texto3: 'La cantidad de días a ingresar debe ser igual o superior a 30',
+     
+    }
+  },
+  computed:{
+    validar(){
+      if(nombreApellido === ''){
+        return texto1;
+      }
+      if(montoInvertido < 1000){
+        return texto2;
+      }
+      if(cantidadDias < 30){
+        return texto3;
+      }
     }
   },
   methods: {
     intereses(cantidadDias){
       let porcentaje = 0;
-
       if(cantidadDias >= 30 && cantidadDias <= 60){
-          porcentaje = (40 / 100);
+        porcentaje = (40 / 100);
       }
       else if (cantidadDias > 60 && cantidadDias <= 120){
           porcentaje = (45 / 100);
@@ -27,6 +43,7 @@ let app = Vue.createApp({
     },
     calculo(montoInvertido, cantidadDias){
       calculoFinal = parseFloat(montoInvertido) + montoInvertido * (cantidadDias / 360) * this.intereses(cantidadDias);
+      alert(calculoFinal)
     },
     reinvertir(montoInvertido, cantidadDias){
       let periodo = [];
@@ -49,9 +66,9 @@ let app = Vue.createApp({
         }
       }
     },
-  }
 
-});app.mount('#app');
+  }
+}).mount('#app');
 
 
 

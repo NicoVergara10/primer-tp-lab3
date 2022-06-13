@@ -19,20 +19,20 @@
             <div class="contenedor">
                 <label>Nombre y Apellido </label>
                 <input type="text" v-model="nombreApellido" id="nombreApellido" placeholder="Ingrese su nombre y apellido"/>
-                <div id="error1"></div>
+                <div id="error1" ><p>{{ text1 }}</p></div>
             </div>
             <div class="contenedor">
                 <label>Monto a Invertir: </label>
                 <input type="number" v-model="montoInvertido" id="montoInvertido" placeholder= 1000 />
-                <div id="error2"></div>
+                <div id="error2" >{{ text2 }}</div>
             </div>
             <div class="contenedor">
                 <label>Cantidad de Días: </label>
                 <input type="number" v-model="cantidadDias" id="cantidadDias" placeholder= 30 />
-                <div id="error3"></div>
+                <div id="error3" >{{ text3 }}</div>
             </div>
             <button type="button" id="btnCalcular" @click="calculo(montoInvertido, cantidadDias)">CALCULAR</button>
-            <button type="button" id="btnReinvertir" @click="reinvertir()">REINVERTIR</button>
+            <button type="button" id="btnReinvertir" @click="reinvertir(montoInvertido,cantidadDias)">REINVERTIR</button>
         </form>
         <div class="calculoInversion">{{ calculo.calculoFinal }}</div>
         <div class="cuadroReinventir">
